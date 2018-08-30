@@ -1,8 +1,8 @@
 /* Equipo 3
 * Brito Segura Angel
 * Carranza Escobar Luis Enrique
-* Osnaya Molina Victor Iv√°n
-* Vel√°zquez M√©ndez Diego Ignacio
+* Osnaya Molina Victor Iv·n
+* Vel·zquez MÈndez Diego Ignacio
 */
 
 import java.util.Enumeration;
@@ -16,35 +16,37 @@ public class Ejercicio1 {
 	    String participante;
 	    Hashtable<String, Integer> Participantes = new Hashtable <String, Integer>();
 	    do{
-	    	System.out.println("\tMen√∫ \tSURVIVOR");
+	    	System.out.println("\tMen˙ \tSURVIVOR");
 	        System.out.println("1. Dar de alta un nuevo partipante.");
 	        System.out.println("2. Ver lista de participantes.");
-	        System.out.println("3. Votaci√≥n.");
-	        System.out.println("4. Expulsar al m√°s votado");
+	        System.out.println("3. VotaciÛn.");
+	        System.out.println("4. Expulsar al m·s votado");
 	        System.out.println("5. Salir");
 	           
-	        System.out.println("Elige una opci√≥n: ");
+	        System.out.println("Elige una opciÛn: ");
 	        opcion = lector.nextInt();
 	            
 	        switch(opcion){
 	               case 1:
 	                   	System.out.println("Ingresar nombre de nuevo participante: ");
-	                   	participante = lector.nextLine();
-	                   	if (Participantes.containsKey(participante) == true){
-	                   		System.out.println("Participante repetido. Imposible darlo de alta");
-	                   		System.out.println("\n");
-	                   	} else {
-	                   		Participantes.put(participante, 0);
-	                   		System.out.println("Participante ingresado correctamente.");
-	                   		System.out.println("\n");
-	                   	}
+	                   	participante = lector.next();
+	                   	Participantes.putIfAbsent(participante, 0);            
 	                   	break;
 	               case 2:
-	            	   	
+	            	   	if(Participantes.isEmpty() == false){
+	            	   		System.out.println("Participantes:");
+		            	   	for (String clave : Participantes.keySet()){
+		           				System.out.println(clave);
+		           			}
+		            	   	System.out.println("\n");
+	            	   	} else {
+	            	   		System.out.println("No hay participantes en el reality show.");
+	            	   		System.out.println("\n");
+	            	   	}
 	           			break;
 	                case 3:
 	                	System.out.println("Ingresar nombre del participante a votar: ");
-	                   	participante = lector.nextLine();
+	                   	participante = lector.next();
 	                   	if (Participantes.containsKey(participante) == false){
 	                   		System.out.println("Participante no encontrado. Imposible votar.");
 	                   		System.out.println("\n");
@@ -57,24 +59,49 @@ public class Ejercicio1 {
 	                   	}
 	                	break;
 	                case 4:
-	                	String clave;
-	           		Integer valor;
+	                	String clave, eliminado;
+	           			Integer valor, max;
+	           			max = 0;
+	           			eliminado = null;
 	            	   	Enumeration<String> claves = Participantes.keys();
-	            	   	System.out.println("Participantes antes de la expulsi√≥n:");
-	           			while(claves.hasMoreElements()){
-	           				clave = claves.nextElement();
-	           				valor = Participantes.get(clave);
-	           				System.out.println("Participante: "+clave+"\tVotos: "+valor);
-	           			}
-	           			System.out.println("\n");
-	           			System.out.println("El participante eliminado fue "+participante);
-	           			System.out.println("\n");
-	                	break;
+	            	   	System.out.println("Participantes antes de la expulsiÛn:");
+	            	   	if(Participantes.isEmpty() == true){
+	            	   		System.out.println("No hay participantes en el reality show.");
+	            	   		System.out.println("\n");
+	            	   	} else {
+	            	   		while(claves.hasMoreElements()){
+		           				clave = claves.nextElement();
+		           				valor = Participantes.get(clave);
+		           				if(max<valor){
+		           					max = valor;
+		           					eliminado = clave;
+		           				}
+		           				System.out.println("Participante: "+clave+"\tVotos: "+valor);
+		           			}
+		           			System.out.println("\nEl participante eliminado fue "+eliminado+" con "+max+" votos");
+		           			Participantes.remove(eliminado);
+		           			System.out.println("\nParticipantes que quedan en competencia:");
+		           			if(Participantes.isEmpty() == true){
+		            	   		System.out.println("No hay participantes en el reality show.");
+		            	   		System.out.println("\n");
+		            	   	} else {
+		            	   		String nombre;
+			           			Integer voto;
+			            	   	Enumeration<String> nombres = Participantes.keys();
+		            	   		while(nombres.hasMoreElements()){
+			           				nombre = nombres.nextElement();
+			           				voto = Participantes.get(nombre);
+			           				System.out.println("Participante: "+nombre+"\tVotos: "+voto);
+			           			}
+		            	   		System.out.println("\n");
+		            	   	}
+	            	   	}
+	            	   	break;
 	                case 5:
-	                	System.out.println("Hasta pronto");
+	                	System.out.println("Fin del reality show. Hasta pronto");
 	                	break;
 	                default:
-	                	System.out.println("Solo n√∫meros entre 1 y 5\n");
+	                	System.out.println("Solo n˙meros entre 1 y 5\n");
 	                	break;
 	           }
 	       }while(opcion!=5);
