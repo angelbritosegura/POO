@@ -1,8 +1,8 @@
 /* Equipo 3
 * Brito Segura Angel
 * Carranza Escobar Luis Enrique
-* Osnaya Molina Victor Iv·n
-* Vel·zquez MÈndez Diego Ignacio
+* Osnaya Molina Victor Iv√°n
+* Vel√°zquez M√©ndez Diego Ignacio
 */
 
 import java.util.Enumeration;
@@ -16,14 +16,14 @@ public class Ejercicio1 {
 	    String participante;
 	    Hashtable<String, Integer> Participantes = new Hashtable <String, Integer>();
 	    do{
-	    	System.out.println("\tMen˙ \tSURVIVOR");
+	    	System.out.println("\tMen√∫ \tSURVIVOR");
 	        System.out.println("1. Dar de alta un nuevo partipante.");
 	        System.out.println("2. Ver lista de participantes.");
-	        System.out.println("3. VotaciÛn.");
-	        System.out.println("4. Expulsar al m·s votado");
+	        System.out.println("3. Votaci√≥n.");
+	        System.out.println("4. Expulsar al m√°s votado");
 	        System.out.println("5. Salir");
 	           
-	        System.out.println("Elige una opciÛn: ");
+	        System.out.println("Elige una opci√≥n: ");
 	        opcion = lector.nextInt();
 	            
 	        switch(opcion){
@@ -58,9 +58,9 @@ public class Ejercicio1 {
 	                	break;
 	                case 4:
 	                	String clave;
-	           			Integer valor;
+	           		Integer valor;
 	            	   	Enumeration<String> claves = Participantes.keys();
-	            	   	System.out.println("Participantes antes de la expulsiÛn:");
+	            	   	System.out.println("Participantes antes de la expulsi√≥n:");
 	           			while(claves.hasMoreElements()){
 	           				clave = claves.nextElement();
 	           				valor = Participantes.get(clave);
@@ -74,7 +74,7 @@ public class Ejercicio1 {
 	                	System.out.println("Hasta pronto");
 	                	break;
 	                default:
-	                	System.out.println("Solo n˙meros entre 1 y 4\n");
+	                	System.out.println("Solo n√∫meros entre 1 y 5\n");
 	                	break;
 	           }
 	       }while(opcion!=5);
