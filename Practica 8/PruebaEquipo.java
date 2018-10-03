@@ -1,9 +1,3 @@
-/* Equipo 3
-* Brito Segura Angel
-* Carranza Escobar Luis Enrique
-* Osnaya Molina Victor Iván
-* Velázquez Méndez Diego Ignacio
-*/
 import practica8.Equipo;
 
 public class PruebaEquipo implements Equipo {
